@@ -13,6 +13,7 @@ import {
   type VideoProject,
   videoProjects,
 } from "./project-data";
+import { ProjectCaseStudy, ProjectCaseStudyHero } from "./project-case-study";
 
 type AccentStyle = CSSProperties & {
   "--accent": string;
@@ -51,6 +52,68 @@ const sectionBackgroundVideos: Record<string, string> = {
   evidence: "/media/06.mp4",
   assets: "/media/04.mp4",
   career: "/media/08.mp4",
+};
+
+const chapterCardPreviewImages: Record<string, string> = {
+  thinking: "/media/home-card-01-portfolio.png",
+  method: "/media/home-card-02-method.png?v=20260812-2",
+  capability: "/media/home-card-03-capability.png?v=20260812-2",
+  projects: "/media/home-card-04-projects.png?v=20260812-2",
+  evidence: "/media/home-card-05-evidence.png?v=20260812-1",
+  assets: "/media/home-card-06-assets.png?v=20260812-2",
+  career: "/media/home-card-07-career.png?v=20260812-2",
+};
+
+const artifactShowcase: Record<string, { image: string; alt: string }> = {
+  图片规则库: {
+    image: "/asset-showcase/image-rule-library.png",
+    alt: "图片规则库素材治理流程图",
+  },
+  视频规则库: {
+    image: "/asset-showcase/video-rule-library.png",
+    alt: "视频规则库音视频模型评测系统图",
+  },
+  工作流模板库: {
+    image: "/asset-showcase/workflow-template-library.png",
+    alt: "Dify 自动化工作流模板库流程图",
+  },
+  "BadCase 目录": {
+    image: "/asset-showcase/badcase-directory.png",
+    alt: "多模态智能客服 BadCase 目录图",
+  },
+  能力矩阵: {
+    image: "/asset-showcase/capability-matrix.png",
+    alt: "AI 训练专家六维熟练度雷达图",
+  },
+  流程泳道图: {
+    image: "/asset-showcase/process-swimlane.png",
+    alt: "多模态素材治理全链路流程泳道图",
+  },
+  团队质检机制: {
+    image: "/asset-showcase/team-qc.png",
+    alt: "三级质控闭环体系图",
+  },
+};
+
+const assetCardImages = [
+  { image: "/asset-cards/rule-assets.png", alt: "规则资产视觉图" },
+  { image: "/asset-cards/tool-assets.png", alt: "工具资产视觉图" },
+  { image: "/asset-cards/defect-assets.png", alt: "缺陷资产视觉图" },
+];
+
+const careerCardImages = [
+  { image: "/career-cards/data-production.png", alt: "数据生产基础视觉图" },
+  { image: "/career-cards/multimodal-expansion.png", alt: "多模态扩展视觉图" },
+  { image: "/career-cards/training-evaluation-loop.png", alt: "训练与评测闭环视觉图" },
+];
+
+const artifactDescriptions: Record<string, string> = {
+  指标口径卡:
+    "固化全项目统一统计公式、指标定义、基线规范，新项目无需重复搭建核算体系",
+  "Before / After":
+    "效果前后对照样本、画质 / 时序 / 一致性对比截图，直观呈现优化收益",
+  "BadCase 证据链":
+    "带时间戳标注的缺陷样本库、问题归类台账，用于模型迭代复盘与边界场景扩充",
 };
 
 const lifeTravelStories = [
@@ -304,25 +367,25 @@ function WorkMethodDrawerContent() {
       code: "01 / STANDARD",
       title: "业务拆解 & 专项标准体系搭建",
       text: "对接产品、运营业务痛点，针对文本、图文海报、商品素材、音视频、LoRA 微调场景，拆解业务约束、合规要求、行业专业规则；输出 SOP、标注维度、挂载规范、错误判定基准，解决模型输出内容冲突、政策错误、图文不一致等线上问题。",
-      image: "/media/work-module-01-wide.png",
+      image: "/media/work-module-01-wide.png?v=wide-20260809-3",
     },
     {
       code: "02 / PRODUCTION",
       title: "数据生产全链路管控",
       text: "基于已制定标准，统筹内部 + 外包标注资源，做任务拆解、人员培训、质检规则落地；把控数据产出质量、交付时效，处理标注歧义 Case 闭环，过滤低质样本，保障训练 / 评测数据集稳定性。",
-      image: "/media/work-module-02-wide.png",
+      image: "/media/work-module-03-wide.png?v=wide-20260809-3",
     },
     {
       code: "03 / ENGINEERING",
       title: "流程工程化与效率优化",
       text: "不依赖纯人工，梳理重复工作，配合工具 / 低代码搭建自动化流水线：样本过滤、抽帧、Caption 生成、初筛校验，减少人工重复工作量，提升数据生产人效，沉淀可复用工具与流程。",
-      image: "/media/work-module-03-wide.png",
+      image: "/media/work-module-02-wide.png?v=wide-20260809-3",
     },
     {
       code: "04 / EVALUATION",
       title: "模型评测与迭代闭环",
       text: "搭建对应业务场景评测体系，设计评测数据集、评测维度；对模型输出结果做效果验收，定位模型缺陷，反向输出数据优化方向，用数据反馈驱动模型迭代，验证业务指标改善效果。",
-      image: "/media/work-module-04-wide.png",
+      image: "/media/work-module-04-wide.png?v=wide-20260809-3",
     },
   ];
   const loopSteps = [
@@ -361,8 +424,9 @@ function WorkMethodDrawerContent() {
   return (
     <div className="work-method-drawer">
       <section className="work-method-drawer-hero">
-        <span>WORK CORE / BUSINESS-DRIVEN DATA LOOP</span>
-        <h2>工作核心｜以数据驱动多模态大模型业务落地</h2>
+        <span>OPERATION MAP</span>
+        <h2>从业务问题到模型改善的闭环路径</h2>
+        <p>把“要模型变好”拆成可执行的连续动作，每一步都留下标准、数据、评测和复盘记录。</p>
       </section>
 
       <section className="work-method-drawer-positioning">
@@ -593,6 +657,138 @@ function LifeVideoCarousel() {
   );
 }
 
+function AudioEvaluationHero() {
+  return (
+    <>
+      <section className="audio-project-masthead">
+        <div><span>CASE STUDY / 01</span><h2>音视频生成模型横向评测</h2><p>从业务选型问题，到可复用的评测资产。</p></div>
+      </section>
+      <nav className="audio-project-steps" aria-label="项目详情页章节">
+        {["项目信息", "背景 & 痛点", "核心工作", "数据可信", "质控机制", "流程泳道", "量化成果", "项目复盘"].map((item, index) => (
+          <a key={item} href={`#audio-section-${index + 1}`}><b>{String(index + 1).padStart(2, "0")}</b><span>{item}</span></a>
+        ))}
+      </nav>
+      <section id="audio-section-1" className="audio-project-hero" aria-labelledby="audio-project-title">
+      <div className="audio-project-hero-heading">
+        <h1 id="audio-project-title">音视频生成模型<br />横向评测专项</h1>
+      </div>
+
+      <div className="audio-project-facts">
+        <article className="audio-project-fact-pair">
+          <div><span>项目周期：</span><strong>2025.04‑2025.05</strong></div>
+          <div><span>我的角色：</span><strong>评测 & 数据负责人</strong></div>
+        </article>
+        <article className="audio-project-goal"><span>业务目标：</span><strong>多款第三方音视频 AIGC 模型横向对比选型</strong><p>输出选型决策依据，沉淀可复用评测资产，指导后续模型迭代。</p></article>
+      </div>
+      </section>
+    </>
+  );
+}
+
+function AudioEvaluationCaseStudy() {
+  const workstreams = [
+    {
+      number: "01",
+      title: "标准体系搭建",
+      lead: "把主观观感，变成可量化、可执行的业务标准。",
+      points: ["对齐真实业务场景，设计 7 维加权评测体系", "覆盖事实准确性、主体时序稳定性、音画字幕对齐、画质、叙事逻辑、人物完整性、业务可用性", "划分缺陷严重等级，输出音视频评测 SOP", "构建普通、高频业务、长尾边界 Case 分层测试集"],
+    },
+    {
+      number: "02",
+      title: "模型评测与盲审",
+      lead: "隐去模型身份，用控制变量保证横向对比公平。",
+      points: ["样本脱敏混淆，执行双人盲审，消除模型偏好", "统一提示词与生成参数，控制变量", "逐视频记录缺陷及时间戳", "输出完整选型报告、落地风险与选型建议"],
+    },
+    {
+      number: "03",
+      title: "自动化数据链路",
+      lead: "把时间留给判断，而不是重复的统计和整理。",
+      points: ["脚本辅助批量任务调度、样本归集和元数据打标", "自动汇总评测结果并计算加权总分", "按模型、缺陷类型、难度等级自动归档", "减少 Excel 手工统计，显著压缩整体评测周期"],
+    },
+    {
+      number: "04",
+      title: "BadCase 闭环运营",
+      lead: "不只给出排名，还要让每个缺陷成为模型优化的坐标。",
+      points: ["搭建 800+ 视频缺陷库，记录标签与缺陷时间片段", "根因归类主体漂移、人物畸变、音画不同步等问题", "将缺陷库交付算法团队，用于迭代与训练数据补充", "新版本复用同一测试集回归验证，形成持续闭环"],
+    },
+  ];
+
+  const blindReviewSteps = ["样本脱敏", "双人独立打分", "分歧归集", "负责人仲裁", "一致性监控"];
+  const swimlaneSteps = [
+    ["业务产品", "业务需求输入", "输出选型报告"],
+    ["评测负责人（本人）", "评测维度 & 权重设计", "构建分层难度测试集", "争议仲裁", "自动聚合统计"],
+    ["评测执行小组", "模型统一生成样本", "样本脱敏盲审", "双人打分"],
+    ["算法团队", "BadCase 缺陷库沉淀", "模型版本复测迭代"],
+  ];
+
+  return (
+    <div className="audio-case-study">
+      <section className="audio-case-banner">
+        <div><span>01 / PROJECT BRIEF</span><h3>音视频生成模型横向评测专项</h3></div>
+        <dl>
+          <div><dt>项目周期</dt><dd>当年落地专项</dd></div>
+          <div><dt>项目定位</dt><dd>多款商业化音视频 AIGC 模型选型 + 能力摸底评测</dd></div>
+          <div><dt>我的角色</dt><dd>评测体系 & 数据训练负责人（独立设计评测框架、测试集和盲审机制，沉淀缺陷库并输出业务选型报告）</dd></div>
+          <div><dt>服务对象</dt><dd>业务产品、算法团队</dd></div>
+        </dl>
+        <article><span>BUSINESS GOAL</span><p>解决多模型选型缺少客观标准、人工打分主观误差大的问题；输出横向对比结论支撑商业化选型，同时沉淀视频 BadCase 库，为模型训练与数据优化提供方向。</p></article>
+      </section>
+
+      <section id="audio-section-2" className="audio-case-pain">
+        <header><span>02 / CONTEXT</span><h3>为什么需要<br />重新定义评测？</h3><p className="audio-case-section-intro">业务需要从多款第三方音视频生成模型中，选出真正适合商业落地的版本。原有模式却无法提供稳定、客观、可复现的判断。</p></header>
+        <div>{[
+          ["无统一评测标准", "每个人评判侧重点不同，主观感受代替客观指标。"],
+          ["评测样本混乱", "普通场景过多，边界与高难业务场景缺失，结论失真。"],
+          ["评测成本高、周期长", "全人工逐条审片，整理与统计占用大量人力。"],
+          ["只有分数，没有沉淀", "只给排名，不保留缺陷样本，无法支持算法定向优化。"],
+        ].map(([title, copy], index) => <article key={title}><span>0{index + 1}</span><h4>{title}</h4><p>{copy}</p></article>)}</div>
+      </section>
+
+      <section id="audio-section-3" className="audio-case-work">
+        <header><span>03 / CORE WORK</span><h3>四条工作流，<br />构成一套完整的评测系统。</h3></header>
+        <div>{workstreams.map((item) => <article key={item.number}><span>{item.number}</span><div><h4>{item.title}</h4><strong>{item.lead}</strong><ul>{item.points.map((point) => <li key={point}>{point}</li>)}</ul></div></article>)}</div>
+      </section>
+
+      <section id="audio-section-4" className="audio-case-trust">
+        <header><span>04 / DATA CREDIBILITY</span><h3>数据能否经得起追问，<br />取决于口径、证据和边界。</h3></header>
+        <div className="trust-baselines">
+          <article><span>DATA 01</span><h4>完整评测周期</h4><dl><div><dt>基线</dt><dd>纯人工全流程评测一轮需要 3 天</dd></div><div><dt>统计主体</dt><dd>评测小组工时记录</dd></div><div><dt>核验方式</dt><dd>全流程节点计时汇总</dd></div><div><dt>个人动作影响</dt><dd>脱敏盲审 + 自动化归集和聚合脚本，周期压缩至 4 小时，人力成本下降 70%</dd></div></dl></article>
+          <article><span>DATA 02</span><h4>评测主观偏差</h4><dl><div><dt>基线</dt><dd>单人独立评测分数偏差区间 ±18%</dd></div><div><dt>统计主体</dt><dd>本人汇总多人员打分数据计算离散度</dd></div><div><dt>核验方式</dt><dd>同一样本多人打分差值统计</dd></div><div><dt>个人动作影响</dt><dd>7 维度加权 SOP + 双人盲审，打分偏差收窄至 ±5% 以内</dd></div></dl></article>
+        </div>
+        <div className="trust-evidence">
+          <article><span>PROCESS EVIDENCE</span><h4>过程证据</h4><ol><li>7 维度加权评测 SOP 与权重说明</li><li>分层难易测试集样本清单</li><li>脱敏盲审打分原始记录表</li><li>800+ 带时间戳 BadCase 素材库</li><li>多模型横向对比选型终版报告</li></ol></article>
+          <article><span>CAUSAL BOUNDARY</span><h4>因果边界</h4><ol><li><b>个人直接产出：</b>评测框架、维度权重、盲审方案、自动统计逻辑</li><li><b>团队协同：</b>双人评审分工、分歧仲裁校准</li><li><b>模型收益：</b>BadCase 回流后，新版本时序和音画同步问题改善</li></ol></article>
+        </div>
+      </section>
+
+      <section id="audio-section-5" className="audio-case-review">
+        <header><span>05 / QUALITY CONTROL</span><h3>双人盲审，<br />让结果不被偏好左右。</h3><p>样本脱敏混淆后进入双人独立打分；分差超阈值时进入争议池，由负责人依据 SOP 仲裁、更新规则，并持续监控评测人员一致性。</p></header>
+        <div className="blind-review-flow">{blindReviewSteps.map((step, index) => <div key={step}><i>{index + 1}</i><span>{step}</span>{index < blindReviewSteps.length - 1 && <b>→</b>}</div>)}</div>
+        <strong className="review-result">产出效果：显著降低人为主观带来的评测偏差。</strong>
+      </section>
+
+      <section id="audio-section-6" className="audio-case-swimlane">
+        <header><span>06 / DELIVERY FLOW</span><h3>从需求输入，<br />到模型复测的完整泳道。</h3></header>
+        <div className="flow-sequence">{["业务需求输入", "评测维度 & 权重设计", "构建分层难度测试集", "模型统一生成样本", "样本脱敏盲审", "双人打分 + 争议仲裁", "自动化聚合统计指标", "输出选型报告", "BadCase 缺陷库沉淀", "模型版本复测迭代"].map((step, index) => <span key={step}><b>{String(index + 1).padStart(2, "0")}</b>{step}</span>)}</div>
+        <div className="swimlane-chart">{swimlaneSteps.map(([lane, ...steps]) => <div className="swimlane-row" key={lane}><b>{lane}</b><div>{steps.map((step) => <span key={step}>{step}</span>)}</div></div>)}</div>
+        <div className="swimlane-assets"><span>评测 SOP</span><span>分层测试集</span><span>打分原始记录</span><span>选型报告</span><span>视频 BadCase 库</span></div>
+      </section>
+
+      <section id="audio-section-7" className="audio-case-results">
+        <span>07 / MEASURABLE OUTCOME</span><h3>标准被建立，<br />周期被重新定义。</h3>
+        <div className="result-hero"><strong>70%</strong><p>评测人力成本下降</p></div>
+        <div className="result-grid"><article><strong>3 天 → 4 小时</strong><p>完整评测任务周期</p></article><article><strong>800+</strong><p>带时间戳的视频缺陷样本</p></article><article><strong>7 维度</strong><p>加权评测体系与分层测试集</p></article></div>
+        <ul className="result-evidence"><li>建立 7 维度加权评测体系与分层难度测试集，填补业务标准空白。</li><li>商业化选型报告直接支撑模型采购决策，输出风险与落地建议。</li><li>SOP、测试集和缺陷标签体系可复用，大幅缩短新模型接入周期。</li></ul>
+      </section>
+
+      <section id="audio-section-8" className="audio-case-retro">
+        <header><span>08 / RETROSPECTIVE</span><h3>一份报告会过期，<br />一套方法可以持续生长。</h3></header>
+        <ol><li>音视频评测必须绑定真实业务场景，否则“好看”不代表“可用”。</li><li>盲审和控制变量是多模型横向对比公平的关键。</li><li>评测的长期价值是沉淀可复用的测试集与 BadCase 资产。</li><li><b>待改进：</b>极长尾高难场景样本仍有限，后续将持续扩充覆盖度。</li></ol>
+      </section>
+    </div>
+  );
+}
+
 function AboutMeDrawerContent() {
   const [detailProject, setDetailProject] = useState<VideoProject | null>(null);
   const [lifeCultureIndexes, setLifeCultureIndexes] = useState<Record<string, number>>({
@@ -647,7 +843,18 @@ function AboutMeDrawerContent() {
                 type="button"
                 className="about-me-project-card"
                 key={project.number}
-                onClick={() => setDetailProject(project)}
+                onClick={() => {
+                  if (project.number === "04") {
+                    window.alert("项目04(智能客服数据建设)正在完善中,暂未提供 PDF。");
+                    return;
+                  }
+                  const pdfUrl =
+                    project.number === "01" ? "/pdfs/01-评测维度.pdf"
+                    : project.number === "02" ? "/pdfs/02-LoRA数据集自动化.pdf"
+                    : project.number === "03" ? "/pdfs/03-惠农素材标注规范.pdf"
+                    : null;
+                  if (pdfUrl) window.open(pdfUrl, "_blank", "noopener,noreferrer");
+                }}
                 aria-label={`查看${project.title}项目详情`}
               >
                 <div>
@@ -778,7 +985,7 @@ function AboutMeDrawerContent() {
             if (event.target === event.currentTarget) setDetailProject(null);
           }}
         >
-          <article className="exp-project-detail-panel">
+          <article className="exp-project-detail-panel is-apple-project">
             <header>
               <span>PROJECT {detailProject.number} / CASE OVERVIEW</span>
               <button
@@ -816,23 +1023,84 @@ function AboutMeDrawerContent() {
                   </article>
                 </div>
               </div>
+              <ProjectCaseStudyHero projectNumber={detailProject.number} />
             </div>
 
-            <div className="exp-project-detail-bottom">
-              <section>
-                <span>03 / 实施路径</span>
-                <ol>
-                  {detailProject.process.map((step) => <li key={step}>{step}</li>)}
-                </ol>
-              </section>
-              <section>
-                <span>04 / 沉淀资产</span>
-                <ul>
-                  {detailProject.assets.map((asset) => <li key={asset}>{asset}</li>)}
-                </ul>
-                <b>{detailProject.tags}</b>
-              </section>
-            </div>
+            <ProjectCaseStudy projectNumber={detailProject.number} />
+
+            {false ? (
+              <div className="apple-project-story">
+                <section className="apple-project-intro">
+                  <span>THE CHALLENGE</span>
+                  <h3>不是选出“最强模型”，<br />而是建立可信的选型方法。</h3>
+                  <p>多业务线并行调用生成模型，但没有统一的样本、参数和评分口径。结果是质量判断依赖主观感受，成本、稳定性与合规风险无法被提前看见。</p>
+                </section>
+
+                <section className="apple-project-numbers" aria-label="项目关键数据">
+                  <article><strong>5</strong><span>款主流模型</span></article>
+                  <article><strong>100</strong><span>条独立生成样本</span></article>
+                  <article><strong>7</strong><span>个核心评测维度</span></article>
+                  <article><strong>7天</strong><span>完成一轮专项横评</span></article>
+                </section>
+
+                <section className="apple-project-system">
+                  <header>
+                    <span>THE SYSTEM</span>
+                    <h3>从 Prompt 到决策，<br />每一步都可追溯。</h3>
+                  </header>
+                  <div className="apple-project-steps">
+                    {[
+                      ["分层测试集", "按 1:2:1 划分低、中、高难度，覆盖广告、数字人与短视频真实业务。"],
+                      ["统一生成", "固定 16:9、720P 与视频时长，控制参数变量，保证模型间公平对比。"],
+                      ["双人盲审", "打乱模型名称和样本顺序，双人独立标注，分歧样本由第三人仲裁。"],
+                      ["缺陷回流", "对 BadCase 进行 P0–P3 分级、缺陷归因和样本归档，支持后续复测。"],
+                    ].map(([title, copy], index) => (
+                      <article key={title}>
+                        <span>0{index + 1}</span>
+                        <h4>{title}</h4>
+                        <p>{copy}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="apple-project-dimensions">
+                  <span>SEVEN DIMENSIONS</span>
+                  <h3>把“看起来不错”，<br />拆成七个可执行的判断。</h3>
+                  <div>
+                    {["音视频遵循", "画面质量", "叙事流畅度", "声音品质", "音视频同步", "音频呈现力", "创意与美感"].map((item, index) => (
+                      <span key={item}><b>{String(index + 1).padStart(2, "0")}</b>{item}</span>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="apple-project-outcome">
+                  <span>OUTCOME</span>
+                  <h3>评测不停在报告，<br />而是进入真实业务路由。</h3>
+                  <p>最终输出按 Prompt 难度和业务类型分流的模型调度策略，并设定异常率超过 20% 自动熔断的灰度规则。从选型、审核到复测，形成可持续运转的闭环。</p>
+                  <div>
+                    <strong>800+</strong>
+                    <span>缺陷样本沉淀为可复用资产</span>
+                  </div>
+                </section>
+              </div>
+            ) : (
+              <div className="exp-project-detail-bottom">
+                <section>
+                  <span>03 / 实施路径</span>
+                  <ol>
+                    {detailProject.process.map((step) => <li key={step}>{step}</li>)}
+                  </ol>
+                </section>
+                <section>
+                  <span>04 / 沉淀资产</span>
+                  <ul>
+                    {detailProject.assets.map((asset) => <li key={asset}>{asset}</li>)}
+                  </ul>
+                  <b>{detailProject.tags}</b>
+                </section>
+              </div>
+            )}
 
             <footer>
               <button
@@ -866,12 +1134,19 @@ function AboutMeDrawerContent() {
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeArtifactIndex, setActiveArtifactIndex] = useState(0);
+  const [autoCycleToken, setAutoCycleToken] = useState(0);
   const [activeVideo, setActiveVideo] = useState<VideoProject | null>(null);
+  const [detailProject, setDetailProject] = useState<VideoProject | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
   const cardRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const active = sections[activeIndex];
   const activeBackgroundVideo = sectionBackgroundVideos[active.visual];
+  const activeArtifact =
+    active.artifacts[Math.min(activeArtifactIndex, active.artifacts.length - 1)] ?? "";
+  const activeArtifactShowcase = artifactShowcase[activeArtifact];
+  const activeArtifactDescription = artifactDescriptions[activeArtifact];
 
   useEffect(() => {
     if (!activeVideo) {
@@ -896,22 +1171,49 @@ export default function Home() {
     if (!detailOpen) return;
     document.body.classList.add("modal-open");
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setDetailOpen(false);
+      if (event.key !== "Escape") return;
+      if (detailProject) {
+        setDetailProject(null);
+        return;
+      }
+      setDetailOpen(false);
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => {
       window.removeEventListener("keydown", closeOnEscape);
       document.body.classList.remove("modal-open");
     };
-  }, [detailOpen]);
+  }, [detailOpen, detailProject]);
+
+  useEffect(() => {
+    if (detailOpen || activeVideo || detailProject) return;
+
+    const timer = window.setTimeout(() => {
+      setActiveIndex((current) => (current + 1) % sections.length);
+      setActiveArtifactIndex(0);
+    }, 5000);
+
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, autoCycleToken, detailOpen, activeVideo, detailProject]);
 
   const selectCard = (index: number) => {
     setActiveIndex(index);
+    setActiveArtifactIndex(0);
+    setAutoCycleToken((current) => current + 1);
     cardRefs.current[index]?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
       inline: "center",
     });
+  };
+
+  const openSectionDetail = (visual: string) => {
+    const targetIndex = sections.findIndex((section) => section.visual === visual);
+    if (targetIndex < 0) return;
+
+    selectCard(targetIndex);
+    setDetailProject(null);
+    setDetailOpen(true);
   };
 
   const move = (direction: number) => {
@@ -966,8 +1268,12 @@ export default function Home() {
         </Link>
         <nav aria-label="主要导航">
           <a href="#chapters">章节</a>
-          <Link href="/section/representative-projects">项目</Link>
-          <Link href="/section/assets">资产</Link>
+          <button type="button" onClick={() => openSectionDetail("projects")}>
+            项目
+          </button>
+          <button type="button" onClick={() => openSectionDetail("assets")}>
+            资产
+          </button>
         </nav>
         <a className="resume-link" href="/resume.pdf" download>
           下载简历 PDF
@@ -1046,29 +1352,47 @@ export default function Home() {
 
       <section className="chapter-gallery" id="chapters">
         <div className="card-rail" aria-label="七个作品集章节">
-          {sections.map((section, index) => (
-            <button
-              className={`chapter-card ${
-                index === activeIndex ? "is-active" : ""
-              }`}
-              key={section.slug}
-              onClick={() => selectCard(index)}
-              ref={(element) => {
-                cardRefs.current[index] = element;
-              }}
-              style={{ "--card-accent": section.accent } as AccentStyle}
-              aria-pressed={index === activeIndex}
-              aria-label={`查看第 ${section.number} 章：${section.title}`}
-            >
-              <CardVisual variant={section.visual} />
-              <span className="card-index">{section.number}</span>
-              <span className="card-kicker">{section.cardKicker}</span>
-              <strong>{section.cardTitle}</strong>
-              <span className="card-arrow" aria-hidden="true">
-                ↗
-              </span>
-            </button>
-          ))}
+          {sections.map((section, index) => {
+            const previewImage = chapterCardPreviewImages[section.visual];
+
+            return (
+              <button
+                className={`chapter-card ${
+                  previewImage ? "has-card-preview" : ""
+                } ${index === activeIndex ? "is-active" : ""}`}
+                key={section.slug}
+                type="button"
+                onClick={() => {
+                  selectCard(index);
+                }}
+                onDoubleClick={() => {
+                  selectCard(index);
+                  setDetailOpen(true);
+                }}
+                ref={(element) => {
+                  cardRefs.current[index] = element;
+                }}
+                style={{ "--card-accent": section.accent } as AccentStyle}
+                aria-pressed={index === activeIndex}
+                aria-label={`打开第 ${section.number} 章右侧详情页：${section.title}`}
+              >
+                {previewImage ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img className="chapter-card-preview-image" src={previewImage} alt="" />
+                ) : (
+                  <>
+                    <CardVisual variant={section.visual} />
+                    <span className="card-index">{section.number}</span>
+                    <span className="card-kicker">{section.cardKicker}</span>
+                    <strong>{section.cardTitle}</strong>
+                    <span className="card-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </>
+                )}
+              </button>
+            );
+          })}
         </div>
 
         <div className="gallery-controls">
@@ -1126,51 +1450,176 @@ export default function Home() {
                 <WorkMethodDrawerContent />
               ) : (
                 <>
-              <section className="section-drawer-intro">
-                <span>{active.code}</span>
+                <section
+                  className={[
+                    "section-drawer-intro",
+                    active.visual === "projects" ? "section-drawer-intro-projects" : "",
+                    active.visual === "assets" ? "section-drawer-intro-assets" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                <span>{active.visual === "capability" ? "DETAIL / APPROACH" : active.code}</span>
                 <div>
                   <h2>{active.title}</h2>
                   <p>{active.intro}</p>
                 </div>
               </section>
 
-              <section className="section-drawer-metrics" aria-label="关键指标">
-                {active.metrics.map((metric, index) => (
-                  <article key={`${metric.value}-${metric.label}`}>
-                    <span>0{index + 1}</span>
-                    <strong>{metric.value}</strong>
-                    <p>{metric.label}</p>
-                  </article>
-                ))}
-              </section>
-
-              <section className="section-drawer-points">
-                <div className="section-drawer-label">
-                  <span>DETAIL / APPROACH</span>
-                  <b>{active.meta}</b>
-                </div>
-                <div>
-                  {active.points.map((point, index) => (
-                    <article key={point.title}>
-                      <span>{String(index + 1).padStart(2, "0")}</span>
-                      <h3>{point.title}</h3>
-                      <p>{point.text}</p>
+                {active.visual !== "projects" && active.visual !== "assets" && (
+                  <section className="section-drawer-metrics" aria-label="关键指标">
+                  {active.metrics.map((metric, index) => (
+                    <article key={`${metric.value}-${metric.label}`}>
+                      <span>0{index + 1}</span>
+                      <strong>{metric.value}</strong>
+                      {active.visual === "career" ? (
+                        <div className="career-metric-labels">
+                          <div className="career-metric-projects">
+                            {metric.label.split("\n").map((label) => (
+                              <p key={label}>{label}</p>
+                            ))}
+                          </div>
+                          {(metric.stage || metric.highlights) && (
+                            <div className="career-metric-detail">
+                              {metric.stage && (
+                                <p className="career-metric-stage">{metric.stage}</p>
+                              )}
+                              {metric.highlights && (
+                                <ul className="career-metric-highlights">
+                                  {metric.highlights.map((highlight) => (
+                                    <li key={highlight}>{highlight}</li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        metric.label.split("\n").map((label) => (
+                          <p key={label}>{label}</p>
+                        ))
+                      )}
                     </article>
                   ))}
+                </section>
+              )}
+
+              <section className="section-drawer-points">
+                {active.visual !== "projects" && (
+                  <div className="section-drawer-label">
+                    <span>DETAIL / APPROACH</span>
+                    {active.visual !== "capability" && <b>{active.meta}</b>}
+                  </div>
+                )}
+                <div>
+                  {active.points.map((point, index) => {
+                    const project = videoProjects[index];
+                    const card = (
+	                      <article
+	                        key={point.title}
+	                        className={[
+	                          active.visual === "projects" ? "section-drawer-project-card" : "",
+	                          point.detail ? "has-hover-detail" : "",
+	                        ].filter(Boolean).join(" ") || undefined}
+	                        aria-label={point.detail ? `${point.title}：${point.detail}` : undefined}
+	                      >
+                        {active.visual === "projects" && project?.poster && (
+                          <div className="section-drawer-project-cover">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={project.poster}
+                              alt={`${point.title}项目流程图`}
+                            />
+                          </div>
+	                        )}
+	                        {active.visual === "career" && careerCardImages[index] && (
+	                          // eslint-disable-next-line @next/next/no-img-element
+	                          <img
+	                            className="career-card-image"
+	                            src={careerCardImages[index].image}
+	                            alt={careerCardImages[index].alt}
+	                          />
+	                        )}
+	                        <span>{String(index + 1).padStart(2, "0")}</span>
+	                        <h3>{point.title}</h3>
+	                        <p className="point-summary">
+	                          {point.text.split("\n\n").map((paragraph) => (
+	                            <span key={paragraph}>{paragraph}</span>
+	                          ))}
+	                        </p>
+	                        {active.visual === "assets" && assetCardImages[index] && (
+	                          // eslint-disable-next-line @next/next/no-img-element
+	                          <img
+	                            className="asset-card-image"
+	                            src={assetCardImages[index].image}
+	                            alt={assetCardImages[index].alt}
+	                          />
+	                        )}
+	                        {point.detail && <p className="point-detail">{point.detail}</p>}
+	                        {active.visual === "projects" && <i>查看项目详情 ↗</i>}
+	                      </article>
+                    );
+
+                    return active.visual === "projects" && project ? (
+                      <button
+                        type="button"
+                        className="section-drawer-project-link"
+                        key={point.title}
+                        onClick={() => {
+                  if (project.pdfUrl) {
+                    window.open(project.pdfUrl, "_blank");
+                  } else {
+                    setDetailProject(project);
+                  }
+                }}
+                        aria-label={`查看${project.title}项目详情`}
+                      >
+                        {card}
+                      </button>
+                    ) : (
+                      card
+                    );
+                  })}
                 </div>
               </section>
 
+              {active.visual !== "career" && (
               <section className="section-drawer-assets">
                 <div>
                   <span>OUTPUT / ASSETS</span>
                   <h3>可展示与持续沉淀</h3>
                 </div>
-                <ul>
-                  {active.artifacts.map((artifact) => (
-                    <li key={artifact}>{artifact}</li>
-                  ))}
-                </ul>
+                <div className="section-drawer-assets-showcase">
+                  <ul>
+                    {active.artifacts.map((artifact, index) => (
+                      <li key={artifact}>
+                        <button
+                          type="button"
+                          className={index === activeArtifactIndex ? "is-active" : ""}
+                          onClick={() => setActiveArtifactIndex(index)}
+                          aria-pressed={index === activeArtifactIndex}
+                        >
+                          {artifact}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  {activeArtifactShowcase && (
+                    <figure className="section-drawer-asset-preview">
+                      <img
+                        src={activeArtifactShowcase.image}
+                        alt={activeArtifactShowcase.alt}
+                      />
+                    </figure>
+                  )}
+                  {activeArtifactDescription && (
+                    <p className="section-drawer-asset-description">
+                      {activeArtifactDescription}
+                    </p>
+                  )}
+                </div>
               </section>
+              )}
                 </>
               )}
             </div>
@@ -1187,6 +1636,146 @@ export default function Home() {
               </button>
             </footer>
           </aside>
+        </div>
+      )}
+
+      {detailProject && (
+        <div
+          className="exp-project-detail-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${detailProject.title}项目介绍`}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setDetailProject(null);
+          }}
+        >
+          <article className="exp-project-detail-panel is-apple-project">
+            <header>
+              <span>PROJECT {detailProject.number} / CASE OVERVIEW</span>
+              <button
+                type="button"
+                onClick={() => setDetailProject(null)}
+                aria-label="关闭项目介绍"
+                autoFocus
+              >
+                ×
+              </button>
+            </header>
+
+            <div className="exp-project-detail-main">
+              <div className="exp-project-detail-visual">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={detailProject.poster} alt="" />
+                <div>
+                  <span>RESULT</span>
+                  <strong>{detailProject.metric}</strong>
+                </div>
+              </div>
+
+              <div className="exp-project-detail-copy">
+                <span>{detailProject.english}</span>
+                <h2>{detailProject.title}</h2>
+                <p>{detailProject.result}</p>
+                <div className="exp-project-detail-meta">
+                  <article>
+                    <b>01 / 项目背景</b>
+                    <p>{detailProject.background}</p>
+                  </article>
+                  <article>
+                    <b>02 / 我的职责</b>
+                    <p>{detailProject.role}</p>
+                  </article>
+                </div>
+              </div>
+              <ProjectCaseStudyHero projectNumber={detailProject.number} />
+            </div>
+
+            <ProjectCaseStudy projectNumber={detailProject.number} />
+
+            {false && (
+              <div className="apple-project-story">
+                <section className="apple-project-intro">
+                  <span>THE CHALLENGE</span>
+                  <h3>不是选出“最强模型”，<br />而是建立可信的选型方法。</h3>
+                  <p>在没有统一样本、生成参数和评分口径的情况下，模型选型依赖主观感受，质量、成本、稳定性和合规风险都无法被提前看见。</p>
+                </section>
+                <section className="apple-project-numbers" aria-label="项目关键数据">
+                  <article><strong>5</strong><span>款主流模型</span></article>
+                  <article><strong>100</strong><span>条独立生成样本</span></article>
+                  <article><strong>7</strong><span>个核心评测维度</span></article>
+                  <article><strong>7天</strong><span>完成一轮专项横评</span></article>
+                </section>
+                <section className="apple-project-system">
+                  <header><span>THE SYSTEM</span><h3>从 Prompt 到决策，<br />每一步都可追溯。</h3></header>
+                  <div className="apple-project-steps">
+                    {[
+                      ["分层测试集", "按 1:2:1 划分低、中、高难度，覆盖真实业务。"],
+                      ["统一生成", "固定画幅、分辨率和时长，保证公平对比。"],
+                      ["双人盲审", "双人独立标注，分歧样本由第三人仲裁。"],
+                      ["缺陷回流", "BadCase 分级、归因与归档，用于后续复测。"],
+                    ].map(([title, copy], index) => (
+                      <article key={title}><span>0{index + 1}</span><h4>{title}</h4><p>{copy}</p></article>
+                    ))}
+                  </div>
+                </section>
+                <section className="apple-project-dimensions">
+                  <span>SEVEN DIMENSIONS</span>
+                  <h3>把“看起来不错”，<br />拆成七个可执行的判断。</h3>
+                  <div>{["音视频遵循", "画面质量", "叙事流畅度", "声音品质", "音视频同步", "音频呈现力", "创意与美感"].map((item, index) => <span key={item}><b>{String(index + 1).padStart(2, "0")}</b>{item}</span>)}</div>
+                </section>
+                <section className="apple-project-outcome">
+                  <span>OUTCOME</span>
+                  <h3>评测不停在报告，<br />而是进入真实业务路由。</h3>
+                  <p>输出按 Prompt 难度和业务类型分流的模型调度策略，设定异常率超过 20% 自动熔断的灰度规则。</p>
+                  <div><strong>800+</strong><span>缺陷样本沉淀为可复用资产</span></div>
+                </section>
+              </div>
+            )}
+
+            {false && <div className="exp-project-detail-bottom">
+              <section>
+                <span>03 / 实施路径</span>
+                <ol>
+                  {detailProject.process.map((step) => <li key={step}>{step}</li>)}
+                </ol>
+              </section>
+              <section>
+                <span>04 / 沉淀资产</span>
+                <ul>
+                  {detailProject.assets.map((asset) => <li key={asset}>{asset}</li>)}
+                </ul>
+                <b>{detailProject.tags}</b>
+              </section>
+            </div>}
+
+            <footer>
+              <button
+                type="button"
+                onClick={() => {
+                  const current = videoProjects.findIndex(
+                    (project) => project.number === detailProject.number,
+                  );
+                  const previous = (current - 1 + videoProjects.length) % videoProjects.length;
+                  setDetailProject(videoProjects[previous]);
+                }}
+              >
+                ← 上一个项目
+              </button>
+              <span>{detailProject.number} / {String(videoProjects.length).padStart(2, "0")}</span>
+              <button
+                type="button"
+                onClick={() => {
+                  const current = videoProjects.findIndex(
+                    (project) => project.number === detailProject.number,
+                  );
+                  const next = (current + 1) % videoProjects.length;
+                  setDetailProject(videoProjects[next]);
+                }}
+              >
+                下一个项目 →
+              </button>
+            </footer>
+          </article>
         </div>
       )}
 

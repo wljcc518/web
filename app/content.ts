@@ -12,8 +12,13 @@ export type PortfolioSection = {
   visual: string;
   code: string;
   intro: string;
-  metrics: Array<{ value: string; label: string }>;
-  points: Array<{ title: string; text: string }>;
+  metrics: Array<{
+    value: string;
+    label: string;
+    stage?: string;
+    highlights?: string[];
+  }>;
+  points: Array<{ title: string; text: string; detail?: string }>;
   artifacts: string[];
 };
 
@@ -115,20 +120,28 @@ export const sections: PortfolioSection[] = [
     ],
     points: [
       {
-        title: "数据集治理",
-        text: "文本、图文、音视频全模态清洗、标注、质检、格式化与版本管理。",
+        title: "标准体系搭建",
+        text: "对齐业务痛点输出标注 SOP、评测规范、挂载规则，完成多模态数据标准从 0-1 落地，统一内外团队执行口径。",
+        detail:
+          "针对文本对话、图文素材、LoRA 微调、音视频生成等业务场景，梳理业务边界与风险 case，输出完整标注规范、质检规则、素材挂载标准；完成规则试标、迭代修订、培训落地，对齐业务、算法、标注多方认知，沉淀可复用的标准化文档资产，解决标准不统一、输出结果不可控问题。项目包含：多模态客服标注体系、化肥营销素材标注 & 挂载专项等。",
       },
       {
-        title: "自动化流水线",
-        text: "Dify 与 Python 组合处理 ASR、清洗、分段、去重、审核和多格式导出。",
+        title: "模型评测与盲审",
+        text: "搭建多维度评测集，执行盲审评测，量化模型能力，输出可落地优化结论，支撑算法迭代决策。",
+        detail:
+          "围绕业务目标构建评测数据集，设计合规、事实准确性、图文一致性、生成质量等评测维度；组织盲审评测，规避主观偏见，量化模型各项指标；拆解 BadCase 根因，区分是模型能力问题、数据问题还是 prompt 问题，输出完整评测报告，给到算法明确优化方向，用于版本迭代验收。覆盖大语言模型、图文生成、音视频生成类模型评测工作。",
       },
       {
-        title: "评测与 BadCase",
-        text: "分层测试集、双人盲审、加权评分和缺陷分类，形成模型迭代证据。",
+        title: "自动化数据链路",
+        text: "串联工具、流水线，降低人工重复工作量，提升数据生产、处理、流转全链路人效。",
+        detail:
+          "基于 Dify 等工具搭建自动化工作流，实现图片 caption、视频抽帧、初筛过滤等能力；打通数据生产-质检-交付链路，把重复人工操作做自动化预处理；对接标注平台，优化数据流转流程，减少人工复制、筛选、导出的重复劳动，提升数据集交付效率，降低人为引入错误概率。不写底层代码，侧重业务侧流程编排、工具串联落地。",
       },
       {
-        title: "团队质量管理",
-        text: "试标、培训、分层质检、争议校准与交付节奏管理。",
+        title: "BadCase 闭环运营",
+        text: "收集归类线上 & 评测 BadCase，完成 case 回流、数据修复、样本补充，形成发现-分析-修复-验证闭环。",
+        detail:
+          "收集线上业务报错、评测过程中的失败样本，做分类根因分析；区分是规则缺失、训练数据不足、prompt 缺陷、模型本身能力边界；完成 case 清洗、修正、样本补充回流训练集；跟进模型迭代版本复测，验证问题是否修复，沉淀高频问题知识库，持续收敛模型业务侧问题，保障线上业务效果。",
       },
     ],
     artifacts: ["能力矩阵", "流程泳道图", "团队质检机制"],
@@ -178,8 +191,8 @@ export const sections: PortfolioSection[] = [
     slug: "evidence",
     number: "05",
     eyebrow: "EVIDENCE FIRST",
-    meta: "结果必须经得起追问",
-    title: "结果必须\n经得起追问",
+    meta: "证据与结果",
+    title: "证据与结果",
     cardTitle: "证据与结果",
     cardKicker: "口径 / 过程 / 指标",
     summary:
@@ -189,7 +202,7 @@ export const sections: PortfolioSection[] = [
     visual: "evidence",
     code: "PROOF / 05",
     intro:
-      "作品集中的数字不是装饰。每个结果都需要回答：基线是什么、由谁统计、怎样验证、我的动作产生了什么影响。",
+      "作品集量化数据均经过基线锚定、过程留痕、因果拆分，杜绝无依据数字堆砌；所有效率、质量指标均标注初始基线、统计主体、核验方式与个人动作影响，完整还原数据项目落地全链路可信度。",
     metrics: [
       { value: "70%", label: "人力评测成本下降" },
       { value: "98.5%", label: "素材合规率" },
@@ -197,16 +210,19 @@ export const sections: PortfolioSection[] = [
     ],
     points: [
       {
-        title: "基线与口径",
-        text: "明确改造前的耗时、准确率、合规率或错误率，避免只展示孤立结果。",
+        title: "基线锚定・统一统计口径",
+        text:
+          "所有效率、准确率、错误率、一致性指标均标注改造前原始基线；锁定统计主体、计算规则、核验方式，杜绝孤立数字。\n\n改造前基线数值、数据统计方、核验手段、个人动作带来的差值变化\n标注一致性、致命错误率、人效耗时、评测周期均统一计算公式",
       },
       {
-        title: "过程证据",
-        text: "保留规则版本、工作流节点、样本示例、质检记录和评测汇总。",
+        title: "过程留痕・全链路凭证沉淀",
+        text:
+          "项目全节点资料归档留存，作为量化结果支撑依据\n\n标注 SOP 多版本迭代文档、工作节点排期记录、正负样本案例、每日质检台账、多轮评测汇总报表、BadCase 归档库、自动化流水线日志",
       },
       {
-        title: "因果边界",
-        text: "区分个人直接产出、团队协同结果与模型训练后的综合提升。",
+        title: "厘清因果・区分收益来源",
+        text:
+          "严格划分三类成果边界，不混淆个人贡献、团队协作收益、模型迭代综合收益\n\n标准搭建、评测体系设计、规则修订、流程方案设计\n质控机制落地、团队标注一致性提升\n数据集回流训练后，线上模型最终效果优化",
       },
     ],
     artifacts: ["指标口径卡", "Before / After", "BadCase 证据链"],
@@ -224,9 +240,9 @@ export const sections: PortfolioSection[] = [
     proof: "从项目交付到组织资产",
     accent: "#7f98ad",
     visual: "assets",
-    code: "ASSET / 06",
+    code: "DETAIL / APPROACH",
     intro:
-      "真正可复用的训练能力，会在项目结束后留下可查询、可版本化、可迁移的资产，而不是停留在个人经验中。",
+      "优质 AI 数据能力不会随项目结束消散，把项目实战经验固化为可查阅、可版本迭代、跨业务可复用的数据资产，实现单次项目落地，多业务场景持续复用。",
     metrics: [
       { value: "800+", label: "视频缺陷 BadCase" },
       { value: "2000+", label: "图文错误 BadCase" },
@@ -253,7 +269,7 @@ export const sections: PortfolioSection[] = [
     number: "07",
     eyebrow: "CAREER & GROWTH",
     meta: "完整职业经历",
-    title: "经历与\n成长轨迹",
+    title: "经历与成长轨迹",
     cardTitle: "经历与成长轨迹",
     cardKicker: "经历 / 角色 / 成长",
     summary:
@@ -263,11 +279,36 @@ export const sections: PortfolioSection[] = [
     visual: "career",
     code: "CAREER / 07",
     intro:
-      "职业路径呈现能力如何逐步形成：先建立标注与质量基础，再扩展素材治理、自动化数据生产和模型评测。",
+      "从数据执行落地，逐步成长为独立闭环多模态大模型数据训练负责人，完整经历标注质检、规范搭建、素材治理、自动化流水线、模型评测全业务域。",
     metrics: [
-      { value: "2023", label: "多轮对话数据治理" },
-      { value: "2024", label: "多模态素材治理" },
-      { value: "2025+", label: "LoRA 与音视频评测" },
+      {
+        value: "2023",
+        label: "图文多模态智能客服系统项目",
+        stage: "AI 数据训练工程师｜执行落地阶段",
+        highlights: [
+          "夯实标注、质检、BadCase 样本沉淀基础",
+          "完成多轮图文对话数据集交付，熟悉多模态业务痛点",
+        ],
+      },
+      {
+        value: "2024",
+        label: "寰宇惠农补贴多模态素材治理专项",
+        stage: "AI 训练专员｜专项模块负责人",
+        highlights: [
+          "独立输出全套标注 SOP、缺陷分级治理体系",
+          "统筹内外标注团队，完成复杂业务素材从 0-1 治理落地",
+        ],
+      },
+      {
+        value: "2025+",
+        label:
+          "Dify 主播风格 LoRA 数据集自动化搭建专项\n音视频生成模型横向评测专项",
+        stage: "AI 训练专家｜全闭环项目负责人",
+        highlights: [
+          "独立负责完整商业化项目，覆盖规范、评测、自动化、团队统筹全流程",
+          "沉淀可复用规则、工作流、BadCase 资产库，输出业务量化收益",
+        ],
+      },
     ],
     points: [
       {

@@ -314,6 +314,8 @@ function ProjectExperience() {
   const [active, setActive] = useState(0);
   const [detailProject, setDetailProject] = useState<VideoProject | null>(null);
 
+  const closeProjectDetail = () => setDetailProject(null);
+
   useEffect(() => {
     const projectNumber = new URLSearchParams(window.location.search).get("project");
     const projectIndex = videoProjects.findIndex(
@@ -332,7 +334,7 @@ function ProjectExperience() {
     }
     document.body.classList.add("modal-open");
     const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setDetailProject(null);
+      if (event.key === "Escape") closeProjectDetail();
     };
     window.addEventListener("keydown", close);
     return () => {
@@ -381,13 +383,13 @@ function ProjectExperience() {
           aria-modal="true"
           aria-label={`${detailProject.title}项目介绍`}
           onMouseDown={(event) => {
-            if (event.target === event.currentTarget) setDetailProject(null);
+            if (event.target === event.currentTarget) closeProjectDetail();
           }}
         >
           <article className="exp-project-detail-panel">
             <header>
               <span>PROJECT {detailProject.number} / CASE OVERVIEW</span>
-              <button type="button" onClick={() => setDetailProject(null)} aria-label="关闭项目介绍">
+              <button type="button" onClick={closeProjectDetail} aria-label="关闭项目介绍">
                 ×
               </button>
             </header>
