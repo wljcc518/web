@@ -464,15 +464,15 @@
 }
 
 .theme-evidence .apple-detail-theme .section-drawer-points article:nth-child(1) {
-  background-image: url("/evidence-card-bg/baseline.png");
+  background-image: url("/evidence-card-bg/baseline.webp");
 }
 
 .theme-evidence .apple-detail-theme .section-drawer-points article:nth-child(2) {
-  background-image: url("/evidence-card-bg/process.png");
+  background-image: url("/evidence-card-bg/process.webp");
 }
 
 .theme-evidence .apple-detail-theme .section-drawer-points article:nth-child(3) {
-  background-image: url("/evidence-card-bg/causal.png");
+  background-image: url("/evidence-card-bg/causal.webp");
 }
 
 .theme-evidence .apple-detail-theme .section-drawer-points article > span,
@@ -547,19 +547,19 @@
 }
 
 .theme-capability .apple-detail-theme .section-drawer-points article:nth-child(1) {
-  background-image: url("/capability-card-bg/data-pipeline.png");
+  background-image: url("/capability-card-bg/data-pipeline.webp");
 }
 
 .theme-capability .apple-detail-theme .section-drawer-points article:nth-child(2) {
-  background-image: url("/capability-card-bg/dataset-governance.png");
+  background-image: url("/capability-card-bg/dataset-governance.webp");
 }
 
 .theme-capability .apple-detail-theme .section-drawer-points article:nth-child(3) {
-  background-image: url("/capability-card-bg/evaluation.png");
+  background-image: url("/capability-card-bg/evaluation.webp");
 }
 
 .theme-capability .apple-detail-theme .section-drawer-points article:nth-child(4) {
-  background-image: url("/capability-card-bg/quality-loop.png");
+  background-image: url("/capability-card-bg/quality-loop.webp");
 }
 
 .theme-capability .apple-detail-theme .section-drawer-points article > span,
@@ -9661,7 +9661,7 @@ button {
   margin-top: 24px;
   aspect-ratio: 3 / 2;
   border-radius: 6px;
-  background: url("/media/audio-model-evaluation-swimlane.png") center / contain no-repeat;
+  background: url("/media/audio-model-evaluation-swimlane.webp") center / contain no-repeat;
   content: "";
 }
 

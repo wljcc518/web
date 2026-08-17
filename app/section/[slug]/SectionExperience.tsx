@@ -124,7 +124,7 @@ const careerItems = [
     role: "建立标注与质量基础",
     detail: "从单轮、多轮对话规范开始，掌握意图拆解、边界定义、试标与质检。",
     proof: "意图体系｜多轮标注｜质量校准",
-    poster: "/media/project-04-sft.png",
+    poster: "/media/project-04-sft.webp",
   },
   {
     year: "2024",
@@ -132,7 +132,7 @@ const careerItems = [
     role: "从文本扩展到图片与视频",
     detail: "统一图片、海报、视频素材的标注、存储与线上挂载规则。",
     proof: "12万+素材｜合规率98.5%",
-    poster: "/media/project-03-caption.png",
+    poster: "/media/project-03-caption.webp",
   },
   {
     year: "2025",
@@ -140,7 +140,7 @@ const careerItems = [
     role: "从数据生产走向模型反馈",
     detail: "搭建分层测试集、七维评分、双人盲审和BadCase归因机制。",
     proof: "5款模型｜800+视频BadCase",
-    poster: "/media/project-01-evaluation.png",
+    poster: "/media/project-01-evaluation.webp",
   },
   {
     year: "2026",
@@ -148,7 +148,7 @@ const careerItems = [
     role: "LoRA、SFT与自动化链路",
     detail: "将素材预处理、SFT样本、LoRA训练和效果评测连接为迭代闭环。",
     proof: "15节点｜风格相似度+37%",
-    poster: "/media/project-02-lora.png",
+    poster: "/media/project-02-lora.webp",
   },
 ];
 

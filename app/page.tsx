@@ -55,56 +55,56 @@ const sectionBackgroundVideos: Record<string, string> = {
 };
 
 const chapterCardPreviewImages: Record<string, string> = {
-  thinking: "/media/home-card-01-portfolio.png",
-  method: "/media/home-card-02-method.png?v=20260812-2",
-  capability: "/media/home-card-03-capability.png?v=20260812-2",
-  projects: "/media/home-card-04-projects.png?v=20260812-2",
-  evidence: "/media/home-card-05-evidence.png?v=20260812-1",
-  assets: "/media/home-card-06-assets.png?v=20260812-2",
-  career: "/media/home-card-07-career.png?v=20260812-2",
+  thinking: "/media/home-card-01-portfolio.webp",
+  method: "/media/home-card-02-method.webp?v=20260812-2",
+  capability: "/media/home-card-03-capability.webp?v=20260812-2",
+  projects: "/media/home-card-04-projects.webp?v=20260812-2",
+  evidence: "/media/home-card-05-evidence.webp?v=20260812-1",
+  assets: "/media/home-card-06-assets.webp?v=20260812-2",
+  career: "/media/home-card-07-career.webp?v=20260812-2",
 };
 
 const artifactShowcase: Record<string, { image: string; alt: string }> = {
   图片规则库: {
-    image: "/asset-showcase/image-rule-library.png",
+    image: "/asset-showcase/image-rule-library.webp",
     alt: "图片规则库素材治理流程图",
   },
   视频规则库: {
-    image: "/asset-showcase/video-rule-library.png",
+    image: "/asset-showcase/video-rule-library.webp",
     alt: "视频规则库音视频模型评测系统图",
   },
   工作流模板库: {
-    image: "/asset-showcase/workflow-template-library.png",
+    image: "/asset-showcase/workflow-template-library.webp",
     alt: "Dify 自动化工作流模板库流程图",
   },
   "BadCase 目录": {
-    image: "/asset-showcase/badcase-directory.png",
+    image: "/asset-showcase/badcase-directory.webp",
     alt: "多模态智能客服 BadCase 目录图",
   },
   能力矩阵: {
-    image: "/asset-showcase/capability-matrix.png",
+    image: "/asset-showcase/capability-matrix.webp",
     alt: "AI 训练专家六维熟练度雷达图",
   },
   流程泳道图: {
-    image: "/asset-showcase/process-swimlane.png",
+    image: "/asset-showcase/process-swimlane.webp",
     alt: "多模态素材治理全链路流程泳道图",
   },
   团队质检机制: {
-    image: "/asset-showcase/team-qc.png",
+    image: "/asset-showcase/team-qc.webp",
     alt: "三级质控闭环体系图",
   },
 };
 
 const assetCardImages = [
-  { image: "/asset-cards/rule-assets.png", alt: "规则资产视觉图" },
-  { image: "/asset-cards/tool-assets.png", alt: "工具资产视觉图" },
-  { image: "/asset-cards/defect-assets.png", alt: "缺陷资产视觉图" },
+  { image: "/asset-cards/rule-assets.webp", alt: "规则资产视觉图" },
+  { image: "/asset-cards/tool-assets.webp", alt: "工具资产视觉图" },
+  { image: "/asset-cards/defect-assets.webp", alt: "缺陷资产视觉图" },
 ];
 
 const careerCardImages = [
-  { image: "/career-cards/data-production.png", alt: "数据生产基础视觉图" },
-  { image: "/career-cards/multimodal-expansion.png", alt: "多模态扩展视觉图" },
-  { image: "/career-cards/training-evaluation-loop.png", alt: "训练与评测闭环视觉图" },
+  { image: "/career-cards/data-production.webp", alt: "数据生产基础视觉图" },
+  { image: "/career-cards/multimodal-expansion.webp", alt: "多模态扩展视觉图" },
+  { image: "/career-cards/training-evaluation-loop.webp", alt: "训练与评测闭环视觉图" },
 ];
 
 const artifactDescriptions: Record<string, string> = {
@@ -123,7 +123,7 @@ const lifeTravelStories = [
     location: "从深夜走到日出",
     description: "把漫长的夜路、抵达山顶前的疲惫与第一束日光放在同一段叙事中，让视频和文字共同保留这次经历。",
     video: "/media/life/夜爬泰山.mp4",
-    poster: "/media/life/日出.jpg",
+    poster: "/media/life/日出.webp",
   },
   {
     number: "02",
@@ -131,15 +131,15 @@ const lifeTravelStories = [
     location: "把节奏交给浪潮",
     description: "海边更像一次短暂清空：听浪、看落日、记录没有任务的时间。在缓慢的浪潮里重新找回观察和感受的节奏。",
     video: "/media/life/海边.mp4",
-    poster: "/media/life/海边.jpg",
+    poster: "/media/life/海边.webp",
   },
 ];
 
 const lifeTravelClips = [
-  { title: "日落", video: "/media/life/日落.mp4", poster: "/media/life/日落.jpg" },
-  { title: "湖面", video: "/media/life/湖面.mp4", poster: "/media/life/湖面.jpg" },
-  { title: "爬雪山", video: "/media/life/雪山.mp4", poster: "/media/life/雪山.jpg" },
-  { title: "铃铛", video: "/media/life/铃铛.mp4", poster: "/media/life/铃铛.jpg" },
+  { title: "日落", video: "/media/life/日落.mp4", poster: "/media/life/日落.webp" },
+  { title: "湖面", video: "/media/life/湖面.mp4", poster: "/media/life/湖面.webp" },
+  { title: "爬雪山", video: "/media/life/雪山.mp4", poster: "/media/life/雪山.webp" },
+  { title: "铃铛", video: "/media/life/铃铛.mp4", poster: "/media/life/铃铛.webp" },
 ];
 
 const lifeVideoCarouselBaseItems = [
@@ -169,7 +169,7 @@ const lifePhotoSlots = Array.from({ length: 67 }, (_, index) => index + 1)
   .filter((photoNumber) => photoNumber !== 23 && photoNumber !== 66)
   .map((photoNumber, index) => ({
     label: `旅行照片 ${String(index + 1).padStart(2, "0")}`,
-    src: `/media/life/travel-archive/travel-${String(photoNumber).padStart(3, "0")}.jpg`,
+    src: `/media/life/travel-archive/travel-${String(photoNumber).padStart(3, "0")}.webp`,
   }));
 
 const lifeCultureCollections = [
@@ -179,15 +179,15 @@ const lifeCultureCollections = [
     english: "BOOKS",
     title: "读书",
     items: [
-      { name: "《杀死一只知更鸟》", meta: "文学 / 成长", note: "在偏见与不公面前，仍然选择理解、勇气与善意。", cover: "/media/life/books/book-01.jpg" },
-      { name: "《鞋狗》", meta: "商业 / 创业", note: "从耐克的成长经历里，看见长期主义、选择与冒险。", cover: "/media/life/books/book-02.jpg" },
-      { name: "《光荣与梦想》", meta: "历史 / 社会", note: "把个人命运放进时代背景中，理解社会如何持续变化。", cover: "/media/life/books/book-03.jpg" },
-      { name: "《月亮与六便士》", meta: "文学 / 理想", note: "关于现实生活、内在冲动与个人选择的持续追问。", cover: "/media/life/books/book-04.jpg" },
-      { name: "《平凡的世界》", meta: "文学 / 人生", note: "在普通生活的重量里，看见人的坚韧、尊严与成长。", cover: "/media/life/books/book-05.jpg" },
-      { name: "《明朝那些事儿》", meta: "历史 / 叙事", note: "用更易读的叙事方式理解历史人物、制度与时代进程。", cover: "/media/life/books/book-06.jpg" },
-      { name: "《奇点更近》", meta: "科技 / 未来", note: "从技术加速的视角，观察人工智能与人类未来的关系。", cover: "/media/life/books/book-07.jpg" },
-      { name: "《机器学习》", meta: "AI / 算法", note: "连接算法原理、公式推导与代码实践，补足模型基础认知。", cover: "/media/life/books/book-08.jpg" },
-      { name: "《智慧的疆界》", meta: "AI / 计算史", note: "沿着图灵机与人工智能的发展，理解机器智慧的边界。", cover: "/media/life/books/book-09.jpg" },
+      { name: "《杀死一只知更鸟》", meta: "文学 / 成长", note: "在偏见与不公面前，仍然选择理解、勇气与善意。", cover: "/media/life/books/book-01.webp" },
+      { name: "《鞋狗》", meta: "商业 / 创业", note: "从耐克的成长经历里，看见长期主义、选择与冒险。", cover: "/media/life/books/book-02.webp" },
+      { name: "《光荣与梦想》", meta: "历史 / 社会", note: "把个人命运放进时代背景中，理解社会如何持续变化。", cover: "/media/life/books/book-03.webp" },
+      { name: "《月亮与六便士》", meta: "文学 / 理想", note: "关于现实生活、内在冲动与个人选择的持续追问。", cover: "/media/life/books/book-04.webp" },
+      { name: "《平凡的世界》", meta: "文学 / 人生", note: "在普通生活的重量里，看见人的坚韧、尊严与成长。", cover: "/media/life/books/book-05.webp" },
+      { name: "《明朝那些事儿》", meta: "历史 / 叙事", note: "用更易读的叙事方式理解历史人物、制度与时代进程。", cover: "/media/life/books/book-06.webp" },
+      { name: "《奇点更近》", meta: "科技 / 未来", note: "从技术加速的视角，观察人工智能与人类未来的关系。", cover: "/media/life/books/book-07.webp" },
+      { name: "《机器学习》", meta: "AI / 算法", note: "连接算法原理、公式推导与代码实践，补足模型基础认知。", cover: "/media/life/books/book-08.webp" },
+      { name: "《智慧的疆界》", meta: "AI / 计算史", note: "沿着图灵机与人工智能的发展，理解机器智慧的边界。", cover: "/media/life/books/book-09.webp" },
     ],
   },
   {
@@ -196,16 +196,16 @@ const lifeCultureCollections = [
     english: "FILMS",
     title: "影视",
     items: [
-      { name: "《辛德勒的名单》", meta: "电影 / 历史", note: "在黑暗历史中，看见个体选择所能守住的人性与生命。", cover: "/media/life/films/film-01.jpg" },
-      { name: "《教父》", meta: "电影 / 家族", note: "权力、家庭与秩序交织下的经典人物叙事。", cover: "/media/life/films/film-02.jpg" },
-      { name: "《勇敢的心》", meta: "电影 / 史诗", note: "关于自由、信念与承担代价的史诗表达。", cover: "/media/life/films/film-03.jpg" },
-      { name: "《生活大爆炸》", meta: "剧集 / 喜剧", note: "用轻松日常讲述理工思维、友谊与共同成长。", cover: "/media/life/films/film-04.jpg" },
-      { name: "《志愿军：浴血和平》", meta: "电影 / 战争", note: "在战场与谈判的双线中理解和平背后的牺牲。", cover: "/media/life/films/film-05.jpg" },
-      { name: "《阿甘正传》", meta: "电影 / 人生", note: "以真诚和行动穿过时代变化，保留对生活的相信。", cover: "/media/life/films/film-06.jpg" },
-      { name: "《权力的游戏》", meta: "剧集 / 奇幻", note: "庞大世界观中关于权力、选择与命运的群像叙事。", cover: "/media/life/films/film-07.jpg" },
-      { name: "《指环王》", meta: "电影 / 奇幻", note: "在漫长旅途中理解勇气、伙伴与普通人的坚持。", cover: "/media/life/films/film-08.jpg" },
-      { name: "《肖申克的救赎》", meta: "电影 / 希望", note: "困境之中仍保有耐心、希望与重新选择的能力。", cover: "/media/life/films/film-09.jpg" },
-      { name: "《绿皮书》", meta: "电影 / 公路", note: "在一段旅程中跨越偏见，建立理解与真正的友谊。", cover: "/media/life/films/film-10.jpg" },
+      { name: "《辛德勒的名单》", meta: "电影 / 历史", note: "在黑暗历史中，看见个体选择所能守住的人性与生命。", cover: "/media/life/films/film-01.webp" },
+      { name: "《教父》", meta: "电影 / 家族", note: "权力、家庭与秩序交织下的经典人物叙事。", cover: "/media/life/films/film-02.webp" },
+      { name: "《勇敢的心》", meta: "电影 / 史诗", note: "关于自由、信念与承担代价的史诗表达。", cover: "/media/life/films/film-03.webp" },
+      { name: "《生活大爆炸》", meta: "剧集 / 喜剧", note: "用轻松日常讲述理工思维、友谊与共同成长。", cover: "/media/life/films/film-04.webp" },
+      { name: "《志愿军：浴血和平》", meta: "电影 / 战争", note: "在战场与谈判的双线中理解和平背后的牺牲。", cover: "/media/life/films/film-05.webp" },
+      { name: "《阿甘正传》", meta: "电影 / 人生", note: "以真诚和行动穿过时代变化，保留对生活的相信。", cover: "/media/life/films/film-06.webp" },
+      { name: "《权力的游戏》", meta: "剧集 / 奇幻", note: "庞大世界观中关于权力、选择与命运的群像叙事。", cover: "/media/life/films/film-07.webp" },
+      { name: "《指环王》", meta: "电影 / 奇幻", note: "在漫长旅途中理解勇气、伙伴与普通人的坚持。", cover: "/media/life/films/film-08.webp" },
+      { name: "《肖申克的救赎》", meta: "电影 / 希望", note: "困境之中仍保有耐心、希望与重新选择的能力。", cover: "/media/life/films/film-09.webp" },
+      { name: "《绿皮书》", meta: "电影 / 公路", note: "在一段旅程中跨越偏见，建立理解与真正的友谊。", cover: "/media/life/films/film-10.webp" },
     ],
   },
   {
@@ -214,11 +214,11 @@ const lifeCultureCollections = [
     english: "ANIME",
     title: "漫画与动漫",
     items: [
-      { name: "《咒术回战》", meta: "动漫 / 战斗", note: "在高压对抗中观察选择、责任与同伴之间的关系。", cover: "/media/life/anime/anime-01.jpg" },
-      { name: "《葬送的芙莉莲》", meta: "动漫 / 时间", note: "在缓慢旅途中重新认识时间、记忆与陪伴。", cover: "/media/life/anime/anime-02.jpg" },
-      { name: "《排球少年!!》", meta: "动漫 / 排球", note: "关于团队协作、长期训练和持续突破的热血故事。", cover: "/media/life/anime/anime-03.jpg" },
-      { name: "《强风吹拂》", meta: "动漫 / 跑步", note: "十个人用各自的节奏共同奔向同一个长期目标。", cover: "/media/life/anime/anime-04.png" },
-      { name: "《钻石王牌》", meta: "动漫 / 棒球", note: "在竞争和配合中不断磨炼技术，也重新理解团队位置。", cover: "/media/life/anime/anime-05.jpg" },
+      { name: "《咒术回战》", meta: "动漫 / 战斗", note: "在高压对抗中观察选择、责任与同伴之间的关系。", cover: "/media/life/anime/anime-01.webp" },
+      { name: "《葬送的芙莉莲》", meta: "动漫 / 时间", note: "在缓慢旅途中重新认识时间、记忆与陪伴。", cover: "/media/life/anime/anime-02.webp" },
+      { name: "《排球少年!!》", meta: "动漫 / 排球", note: "关于团队协作、长期训练和持续突破的热血故事。", cover: "/media/life/anime/anime-03.webp" },
+      { name: "《强风吹拂》", meta: "动漫 / 跑步", note: "十个人用各自的节奏共同奔向同一个长期目标。", cover: "/media/life/anime/anime-04.webp" },
+      { name: "《钻石王牌》", meta: "动漫 / 棒球", note: "在竞争和配合中不断磨炼技术，也重新理解团队位置。", cover: "/media/life/anime/anime-05.webp" },
     ],
   },
 ] as const;
@@ -367,25 +367,25 @@ function WorkMethodDrawerContent() {
       code: "01 / STANDARD",
       title: "业务拆解 & 专项标准体系搭建",
       text: "对接产品、运营业务痛点，针对文本、图文海报、商品素材、音视频、LoRA 微调场景，拆解业务约束、合规要求、行业专业规则；输出 SOP、标注维度、挂载规范、错误判定基准，解决模型输出内容冲突、政策错误、图文不一致等线上问题。",
-      image: "/media/work-module-01-wide.png?v=wide-20260809-3",
+      image: "/media/work-module-01-wide.webp?v=wide-20260809-3",
     },
     {
       code: "02 / PRODUCTION",
       title: "数据生产全链路管控",
       text: "基于已制定标准，统筹内部 + 外包标注资源，做任务拆解、人员培训、质检规则落地；把控数据产出质量、交付时效，处理标注歧义 Case 闭环，过滤低质样本，保障训练 / 评测数据集稳定性。",
-      image: "/media/work-module-03-wide.png?v=wide-20260809-3",
+      image: "/media/work-module-03-wide.webp?v=wide-20260809-3",
     },
     {
       code: "03 / ENGINEERING",
       title: "流程工程化与效率优化",
       text: "不依赖纯人工，梳理重复工作，配合工具 / 低代码搭建自动化流水线：样本过滤、抽帧、Caption 生成、初筛校验，减少人工重复工作量，提升数据生产人效，沉淀可复用工具与流程。",
-      image: "/media/work-module-02-wide.png?v=wide-20260809-3",
+      image: "/media/work-module-02-wide.webp?v=wide-20260809-3",
     },
     {
       code: "04 / EVALUATION",
       title: "模型评测与迭代闭环",
       text: "搭建对应业务场景评测体系，设计评测数据集、评测维度；对模型输出结果做效果验收，定位模型缺陷，反向输出数据优化方向，用数据反馈驱动模型迭代，验证业务指标改善效果。",
-      image: "/media/work-module-04-wide.png?v=wide-20260809-3",
+      image: "/media/work-module-04-wide.webp?v=wide-20260809-3",
     },
   ];
   const loopSteps = [
@@ -393,25 +393,25 @@ function WorkMethodDrawerContent() {
       code: "01",
       title: "业务输入",
       text: "从产品、运营、内容安全侧收集真实问题，先判断模型问题、数据问题还是流程问题。",
-      image: "/media/work-loop-04.png",
+      image: "/media/work-loop-04.webp",
     },
     {
       code: "02",
       title: "标准拆解",
       text: "把抽象目标拆成可标注、可验收、可复核的字段、规则、边界和反例。",
-      image: "/media/work-loop-02.png",
+      image: "/media/work-loop-02.webp",
     },
     {
       code: "03",
       title: "数据生产",
       text: "组织标注、质检、抽样复核与歧义处理，保证数据集稳定交付。",
-      image: "/media/work-loop-03.png",
+      image: "/media/work-loop-03.webp",
     },
     {
       code: "04",
       title: "评测回流",
       text: "用 BadCase 和评测结果反推样本补强方向，让模型迭代有明确依据。",
-      image: "/media/work-loop-01.png",
+      image: "/media/work-loop-01.webp",
     },
   ];
   const assetCards = [
@@ -442,7 +442,7 @@ function WorkMethodDrawerContent() {
         </div>
         <figure className="work-method-positioning-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/work-method-ai-wisdom.png" alt="大理石智者与人工智能认证图景" />
+          <img src="/media/work-method-ai-wisdom.webp" alt="大理石智者与人工智能认证图景" />
         </figure>
       </section>
 
@@ -825,7 +825,7 @@ function AboutMeDrawerContent() {
         </blockquote>
         <figure className="about-me-portrait">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/jia-weiling-portrait.jpg" alt="贾伟玲职业形象照" />
+          <img src="/media/jia-weiling-portrait.webp" alt="贾伟玲职业形象照" />
         </figure>
       </section>
 
