@@ -1238,7 +1238,8 @@ export default function Home() {
         <div className="page-video-background" aria-hidden="true">
           <video
             key={activeBackgroundVideo}
-            src={activeBackgroundVideo}
+            src={sitePath(activeBackgroundVideo)}
+            poster={sitePath(chapterCardPreviewImages[active.visual])}
             muted
             loop
             autoPlay
