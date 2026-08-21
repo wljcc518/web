@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 import { getSection, sections } from "../../content";
 import SectionExperience from "./SectionExperience";
+import { sitePath } from "../../site-path";
 
 const detailVideos: Record<string, string> = {
   thinking: "/media/chapter-01-profile.mp4",
@@ -53,9 +53,9 @@ export default async function SectionPage({
         )}
 
         <header className="experience-header">
-          <Link href="/" className="experience-back">
+          <a href={sitePath("/")} className="experience-back">
             ← 返回首页
-          </Link>
+          </a>
           <span className="experience-brand">
             JIA WEILING
             <small>AI TRAINING PORTFOLIO</small>
@@ -79,15 +79,15 @@ export default async function SectionPage({
 
         <nav className="experience-chapter-nav" aria-label="七个作品集章节">
           {sections.map((item) => (
-            <Link
-              href={`/section/${item.slug}`}
+            <a
+              href={sitePath(`/section/${item.slug}/`)}
               className={item.slug === section.slug ? "is-current" : ""}
               key={item.slug}
               aria-current={item.slug === section.slug ? "page" : undefined}
             >
               <span>{item.number}</span>
               <b>{item.cardTitle}</b>
-            </Link>
+            </a>
           ))}
         </nav>
       </section>

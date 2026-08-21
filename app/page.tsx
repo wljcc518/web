@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   CSSProperties,
   type ReactNode,
@@ -14,6 +13,7 @@ import {
   videoProjects,
 } from "./project-data";
 import { ProjectCaseStudy, ProjectCaseStudyHero } from "./project-case-study";
+import { sitePath } from "./site-path";
 
 type AccentStyle = CSSProperties & {
   "--accent": string;
@@ -1259,13 +1259,13 @@ export default function Home() {
       </div>
 
       <header className="topbar">
-        <Link className="brand" href="/" aria-label="贾伟玲 AI 训练专家首页">
+        <a className="brand" href={sitePath("/")} aria-label="贾伟玲 AI 训练专家首页">
           <span className="brand-dot" />
           <span>
             JIA WEILING
             <small>AI TRAINING PORTFOLIO</small>
           </span>
-        </Link>
+        </a>
         <nav aria-label="主要导航">
           <a href="#chapters">章节</a>
           <button type="button" onClick={() => openSectionDetail("projects")}>

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   CSSProperties,
   useEffect,
@@ -10,6 +9,7 @@ import {
 } from "react";
 import { type PortfolioSection, sections } from "../../content";
 import { type VideoProject, videoProjects } from "../../project-data";
+import { sitePath } from "../../site-path";
 
 type CareerStyle = CSSProperties & {
   "--career-y": string;
@@ -180,7 +180,7 @@ function ProfileExperience({ section }: { section: PortfolioSection }) {
         </div>
       </div>
       <div className="exp-profile-actions">
-        <Link href="/section/representative-projects">查看四个代表项目 ↗</Link>
+        <a href={sitePath("/section/representative-projects/")}>查看四个代表项目 ↗</a>
         <a href="/resume.pdf" download>下载完整简历 PDF ↓</a>
       </div>
     </section>
@@ -725,18 +725,18 @@ export default function SectionExperience({
       {section.visual === "career" && <CareerExperience />}
 
       <nav className="experience-next" aria-label="章节切换">
-        <Link href={`/section/${previous.slug}`}>
+        <a href={sitePath(`/section/${previous.slug}/`)}>
           <span>← 上一章 {previous.number}</span>
           <b>{previous.cardTitle}</b>
-        </Link>
-        <Link href={`/section/${next.slug}`}>
+        </a>
+        <a href={sitePath(`/section/${next.slug}/`)}>
           <span>下一章 {next.number} →</span>
           <b>{next.cardTitle}</b>
-        </Link>
+        </a>
       </nav>
 
       <footer className="experience-footer">
-        <Link href="/">返回七章总览</Link>
+        <a href={sitePath("/")}>返回七章总览</a>
         <a href="mailto:wljcc518@163.com">wljcc518@163.com</a>
       </footer>
     </div>

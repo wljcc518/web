@@ -34,6 +34,10 @@ const localBindingConfig = {
 };
 
 export default defineConfig(async () => {
+  const gitHubPagesBasePath = process.env.GITHUB_PAGES === "true"
+    ? (process.env.GITHUB_PAGES_BASE_PATH ?? "/web")
+    : "";
+  const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? gitHubPagesBasePath;
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= "false";
@@ -44,6 +48,10 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    base: gitHubPagesBasePath ? `${gitHubPagesBasePath}/` : "/",
+    define: {
+      "process.env.NEXT_PUBLIC_BASE_PATH": JSON.stringify(publicBasePath),
+    },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
