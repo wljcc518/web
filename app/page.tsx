@@ -1184,6 +1184,30 @@ export default function Home() {
     };
   }, [detailOpen, detailProject]);
 
+  useEffect(() => {
+    if (detailOpen || activeVideo || detailProject) return;
+
+    const nextIndex = (activeIndex + 1) % sections.length;
+    const nextVideoPath = sectionBackgroundVideos[sections[nextIndex].visual];
+    const preloadVideo = document.createElement("video");
+    preloadVideo.preload = "auto";
+    preloadVideo.muted = true;
+    preloadVideo.src = sitePath(nextVideoPath);
+    preloadVideo.load();
+
+    const timer = window.setTimeout(() => {
+      setActiveIndex(nextIndex);
+      setActiveArtifactIndex(0);
+    }, 5000);
+
+    return () => {
+      window.clearTimeout(timer);
+      preloadVideo.pause();
+      preloadVideo.removeAttribute("src");
+      preloadVideo.load();
+    };
+  }, [activeIndex, detailOpen, activeVideo, detailProject]);
+
   const selectCard = (index: number) => {
     setActiveIndex(index);
     setActiveArtifactIndex(0);
