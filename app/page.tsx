@@ -1135,7 +1135,6 @@ function AboutMeDrawerContent() {
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeArtifactIndex, setActiveArtifactIndex] = useState(0);
-  const [autoCycleToken, setAutoCycleToken] = useState(0);
   const [activeVideo, setActiveVideo] = useState<VideoProject | null>(null);
   const [detailProject, setDetailProject] = useState<VideoProject | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
@@ -1185,21 +1184,9 @@ export default function Home() {
     };
   }, [detailOpen, detailProject]);
 
-  useEffect(() => {
-    if (detailOpen || activeVideo || detailProject) return;
-
-    const timer = window.setTimeout(() => {
-      setActiveIndex((current) => (current + 1) % sections.length);
-      setActiveArtifactIndex(0);
-    }, 5000);
-
-    return () => window.clearTimeout(timer);
-  }, [activeIndex, autoCycleToken, detailOpen, activeVideo, detailProject]);
-
   const selectCard = (index: number) => {
     setActiveIndex(index);
     setActiveArtifactIndex(0);
-    setAutoCycleToken((current) => current + 1);
     cardRefs.current[index]?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
