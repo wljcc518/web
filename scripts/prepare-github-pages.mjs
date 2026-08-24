@@ -39,13 +39,13 @@ function addBasePath(content) {
   let updated = content;
   for (const prefix of directoryPrefixes) {
     updated = updated.replace(
-      new RegExp(`(?<!${escapedBasePath})/${prefix}/`, "g"),
+      new RegExp(`(?<![A-Za-z0-9_/-])/${prefix}/`, "g"),
       `${basePath}/${prefix}/`,
     );
   }
   for (const filename of rootFiles) {
     updated = updated.replace(
-      new RegExp(`(?<!${escapedBasePath})/${filename.replace(".", "\\.")}`, "g"),
+      new RegExp(`(?<![A-Za-z0-9_/-])/${filename.replace(".", "\\.")}`, "g"),
       `${basePath}/${filename}`,
     );
   }
@@ -64,7 +64,7 @@ for (const filePath of outputFiles) {
 await fs.writeFile(path.join(outputDirectory, ".nojekyll"), "");
 
 const invalidRootPath = new RegExp(
-  `(?<!${escapedBasePath})/(?:${directoryPrefixes.join("|")})/|(?<!${escapedBasePath})/(?:${rootFiles.map((name) => name.replace(".", "\\.")).join("|")})`,
+  `(?<![A-Za-z0-9_/-])/(?:${directoryPrefixes.join("|")})/|(?<![A-Za-z0-9_/-])/(?:${rootFiles.map((name) => name.replace(".", "\\.")).join("|")})`,
 );
 
 for (const filePath of outputFiles) {
